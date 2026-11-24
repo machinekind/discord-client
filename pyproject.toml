@@ -1,0 +1,44 @@
+[project]
+name = "discord-client"
+version = "0.1.0"
+description = "Read a Discord guild over the official bot REST API: channels, search, and transcripts for LLM agents"
+readme = "README.md"
+license = "MIT"
+authors = [{ name = "Machinekind" }]
+requires-python = ">=3.11"
+dependencies = [
+    "httpx>=0.27",
+    "python-dotenv>=1",
+]
+
+[project.urls]
+Repository = "https://github.com/machinekind/discord-client"
+Issues = "https://github.com/machinekind/discord-client/issues"
+
+[project.optional-dependencies]
+# The MCP server (discord-client-mcp) for agents without shell access. Optional
+# so a plain CLI install stays small.
+mcp = ["mcp>=2.3,<3", "uvicorn>=0.30"]
+
+[project.scripts]
+discord-client = "discord_client.cli:run"
+discord-client-mcp = "discord_client.mcp_server:run"
+
+[dependency-groups]
+dev = ["pytest>=8.0", "respx>=0.21", "ruff>=0.14.1", "discord-client[mcp]"]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["discord_client"]
+
+[tool.ruff]
+line-length = 100
+
+[tool.ruff.lint]
+# The rule selection is pinned here rather than left to ruff's defaults, which
+# change between releases. Ruff's own version is not pinned (only a minimum, in
+# the dev group), so a newer ruff can still report new findings under these rules.
+select = ["E4", "E7", "E9", "F", "I"]

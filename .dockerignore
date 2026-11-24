@@ -1,0 +1,10 @@
+# Allowlist: the build context holds only what the image installs. Above all
+# this keeps a repo-root .env (bot tokens) and any discord-client.toml or
+# pulled transcripts out of the context sent to the Docker daemon, not just
+# out of the image.
+*
+!pyproject.toml
+!README.md
+!LICENSE
+!discord_client/
+discord_client/**/__pycache__

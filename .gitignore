@@ -1,0 +1,21 @@
+.venv/
+uv.lock
+__pycache__/
+.pytest_cache/
+.ruff_cache/
+
+# Build output
+dist/
+build/
+*.egg-info/
+
+# Secrets and per-machine settings
+.env
+discord-client.toml
+
+# Anything pulled from a guild stays on the machine that pulled it
+day-*/
+*.jsonl
+
+# Agent worktrees and local tool state
+.claude/

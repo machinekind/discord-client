@@ -1,0 +1,18 @@
+# Copy to discord-client.toml in the directory you run the CLI from (that name
+# is gitignored), or point DISCORD_CLIENT_CONFIG at a file anywhere.
+#
+# Every key is optional, and the matching environment variable overrides it.
+# Tokens never go in this file: they are read from the environment or a .env.
+
+# Which guild to read. Leave it out when the bot is in exactly one guild; the
+# client then asks Discord which one that is.
+# Environment: DISCORD_GUILD_ID
+# guild_id = "123456789012345678"
+
+# Channel names that whole-guild reads (`day`) skip, threads included.
+# Environment: DISCORD_IGNORE_CHANNELS (comma-separated)
+# ignore_channels = ["bot-logs"]
+
+# IANA zone that day windows and `--since YYYY-MM-DD` are read in.
+# Environment: DISCORD_TIMEZONE. Default: UTC.
+# timezone = "Europe/Warsaw"
